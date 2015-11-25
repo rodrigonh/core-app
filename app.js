@@ -34,8 +34,8 @@ ipcMain.on('stations', function(event) {
   event.sender.send('stations-reply', radio.getStations());
 });
 
-ipcMain.on('station-track', function(event, station) {
-  radio.lookup(station).then(function(json) {
+ipcMain.on('station-track', function(event, station, alternate = false) {
+  radio.lookup(station, alternate).then(function(json) {
       event.sender.send('station-track-reply', json);
   });
 });
