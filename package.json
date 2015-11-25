@@ -1,7 +1,7 @@
 {
   "name": "core-app",
   "version": "1.0.0",
-  "description": "alpha-app",
+  "description": "core-app",
   "main": "main.js",
   "scripts": {
     "start": "electron main.js"

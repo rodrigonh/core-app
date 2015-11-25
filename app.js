@@ -3,8 +3,8 @@ import ipc from 'ipc';
 
 import BrowserWindow from 'browser-window';
 
-import Radio from 'alpha-radio';
-import Helper from 'alpha-spotify-webhelper';
+import Radio from 'core-radio';
+import Helper from 'core-spotify-webhelper';
 
 let helper = new Helper();
 let radio = new Radio();
