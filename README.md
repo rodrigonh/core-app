@@ -41,7 +41,7 @@ double-click the cover or track info and core will minimize to the bottom right 
 
 ## todo
 
-- add multiple layers of fallback: if a track is not found, try to find the track on soundcloud or youtube or try to find a similar track based on the last 3 played tracks on the channel (via echonest) or switch to a alternative radio channel. 
+- add multiple layers of fallback: if a track is not found, try to find the track on soundcloud or youtube or try to find a similar track based on the last 3 played tracks on the channel (via echonest) ~~or switch to a alternative radio channel~~ 
 
 
 ## country setting
@@ -49,7 +49,7 @@ double-click the cover or track info and core will minimize to the bottom right 
 the setting is currently based on DE (germany), which is hardcoded in the client atm.
 I'll change that in the future. sorry :)
 
-all Spotify Web API queries are appended with &country=DE to prevent "Song is not available in your Country", but that does not work all the time. (maybe Spotify has a Cache and the Song has been removed)
+all Spotify Web API queries are appended with country=DE and available_market=DE to prevent "Song is not available in your Country" ~~but that does not work all the time. (maybe Spotify has a Cache and the Song has been removed)~~
 
 but the app should work anyway.
 
