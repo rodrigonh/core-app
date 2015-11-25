@@ -1,7 +1,4 @@
-import app from 'app';
-import ipc from 'ipc';
-
-import BrowserWindow from 'browser-window';
+import { app, BrowserWindow, electron, ipcMain } from 'electron';
 
 import Radio from 'core-radio';
 import Helper from 'core-spotify-webhelper';
@@ -9,41 +6,41 @@ import Helper from 'core-spotify-webhelper';
 let helper = new Helper();
 let radio = new Radio();
 
-ipc.on('version', function(event) {
+ipcMain.on('version', function(event) {
   helper.version().then(function(json) {
     event.sender.send('version-reply', json);
   });
 });
 
-ipc.on('status', function(event) {
+ipcMain.on('status', function(event) {
   helper.status().then(function(json) {
     event.sender.send('status-reply', json);
   });
 });
 
-ipc.on('pause', function(event) {
+ipcMain.on('pause', function(event) {
   helper.pause().then(function(json) {
     event.sender.send('pause-reply', json);
   });
 });
 
-ipc.on('unpause', function(event) {
+ipcMain.on('unpause', function(event) {
   helper.unpause().then(function(json) {
     event.sender.send('unpause-reply', json);
   });
 });
 
-ipc.on('stations', function(event) {
+ipcMain.on('stations', function(event) {
   event.sender.send('stations-reply', radio.getStations());
 });
 
-ipc.on('station-track', function(event, station) {
+ipcMain.on('station-track', function(event, station) {
   radio.lookup(station).then(function(json) {
       event.sender.send('station-track-reply', json);
   });
 });
 
-ipc.on('play-track', function(event, id) {
+ipcMain.on('play-track', function(event, id) {
   helper.play(id).then(function(json) {
       event.sender.send('play-track-reply', json);
   });
@@ -69,7 +66,7 @@ app.on('ready', function() {
     'standard-window': false
   });
   /*
-  mainWindow.loadUrl('file://' + __dirname + '/index.html');
+  mainWindow.loadURL('file://' + __dirname + '/index.html');
   */
   // Open the DevTools.
   mainWindow.openDevTools({
@@ -82,7 +79,7 @@ app.on('ready', function() {
     height: 800
   });
   */
-  mainWindow.loadUrl('http://localhost:3000');
+  mainWindow.loadURL('http://localhost:3000');
   // mainWindow.openDevTools();
 
   let windowState = {
@@ -94,9 +91,10 @@ app.on('ready', function() {
     },
   };
 
-  const screen = require('screen'); // [Error: Cannot initialize "screen" module before app is ready]
+  // const { screen } = electron; <- does not work as stated in documentation: https://github.com/atom/electron/blob/master/docs/api/screen.md
+  const screen = require('screen');  // [Error: Cannot initialize "screen" module before app is ready]
 
-  ipc.on('minimize', function(event) {
+  ipcMain.on('minimize', function(event) {
     if(windowState.minimized === false) {
       windowState.position.x = mainWindow.getPosition()[0];
       windowState.position.y = mainWindow.getPosition()[1];
