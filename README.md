@@ -29,10 +29,10 @@ the first prototype was a terminal based app, but why not make a mini player wit
 download the release at [Releases](https://github.com/natael/core-app/releases) (OSX only atm.) and start it while Spotify is running. You should see the current track and a list of radio channels.
 
 binary release consists of:
-[https://github.com/natael/core](https://github.com/natael/core)
-[https://github.com/natael/core-radio](https://github.com/natael/core-radio)
-[https://github.com/natael/core-spotify-webhelper](https://github.com/natael/core-spotify-webhelper)
-[https://github.com/atom/electron](https://github.com/atom/electron)
+- [https://github.com/natael/core](https://github.com/natael/core)
+- [https://github.com/natael/core-radio](https://github.com/natael/core-radio)
+- [https://github.com/natael/core-spotify-webhelper](https://github.com/natael/core-spotify-webhelper)
+- [https://github.com/atom/electron](https://github.com/atom/electron)
 
 ## hint
 
